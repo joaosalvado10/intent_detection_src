@@ -109,20 +109,21 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/model)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/model)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/model)
+		file(COPY ${file} DESTINATION ../../devel/lib/${PROJECT_NAME}/model)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/model)
 endforeach()
 
 # Move the hierarchical LandmarkDetector models
+
 file(GLOB files "lib/local/LandmarkDetector/model/model*")
 foreach(file ${files})
 	if (MSVC)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/model)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/model)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/model)
+		file(COPY ${file} DESTINATION ../../devel/lib/${PROJECT_NAME}/model)
 	endif(MSVC)
 
 	install(DIRECTORY ${file} DESTINATION ${CMAKE_CONFIG_DIR}/model)
@@ -134,7 +135,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/model/detection_validation)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/model/detection_validation)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/model/detection_validation)
+		file(COPY ${file} DESTINATION ../../devel/lib/${PROJECT_NAME}/model/detection_validation)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/model/detection_validation)
@@ -146,7 +147,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/model/patch_experts)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/model/patch_experts)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/model/patch_experts)
+		file(COPY ${file} DESTINATION ../../devel/lib/${PROJECT_NAME}/model/patch_experts)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/model/patch_experts)
@@ -158,7 +159,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/model/pdms)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/model/pdms)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/model/pdms)
+		file(COPY ${file} DESTINATION ../../devel/lib/${PROJECT_NAME}/model/pdms)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/model/pdms)
@@ -171,7 +172,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/classifiers)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/classifiers)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/classifiers)
+		file(COPY ${file} DESTINATION ../devel/lib/${PROJECT_NAME}/classifiers)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/classifiers)
@@ -184,7 +185,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/AU_predictors)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/AU_predictors)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/AU_predictors)
+		file(COPY ${file} DESTINATION ../devel/lib/${PROJECT_NAME}/AU_predictors)
 	endif(MSVC)
 
 	install(FILES ${file} DESTINATION ${CMAKE_CONFIG_DIR}/AU_predictors)
@@ -198,7 +199,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/AU_predictors)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/AU_predictors)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/AU_predictors)
+		file(COPY ${file} DESTINATION ../devel/lib/${PROJECT_NAME}/AU_predictors)
 	endif(MSVC)
 
 	install(DIRECTORY ${file} DESTINATION ${CMAKE_CONFIG_DIR}/AU_predictors)
@@ -211,7 +212,7 @@ foreach(file ${files})
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug/AU_predictors)
 		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/Release/AU_predictors)
 	else(MSVC)
-		file(COPY ${file} DESTINATION ${CMAKE_BINARY_DIR}/bin/AU_predictors)
+		file(COPY ${file} DESTINATION ../devel/lib/${PROJECT_NAME}/AU_predictors)
 	endif(MSVC)
 
 	install(DIRECTORY ${file} DESTINATION ${CMAKE_CONFIG_DIR}/AU_predictors)
@@ -257,9 +258,9 @@ target_link_libraries(my_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 # add the subscriber intent
-add_executable(subscribe_intent src/subscribe_intent.cpp)
-add_dependencies(subscribe_intent ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
-target_link_libraries(subscribe_intent ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+#add_executable(subscribe_intent src/subscribe_intent.cpp)
+#add_dependencies(subscribe_intent ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+#target_link_libraries(subscribe_intent ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 
@@ -270,7 +271,7 @@ target_link_libraries(subscribe_intent ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 # Mark executables and/or libraries for installation
-install(TARGETS my_publisher my_subscriber subscribe_intent #resized_publisher
+install(TARGETS my_publisher my_subscriber #subscribe_intent #resized_publisher
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
