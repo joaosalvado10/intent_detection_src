@@ -1,0 +1,16 @@
+float64 pose_tra_x
+float64 pose_tra_y
+float64 pose_tra_z
+float64 pose_rot_x
+float64 pose_rot_y
+float64 pose_rot_z
+float64 gaze_0_rot_x
+float64 gaze_0_rot_y
+float64 gaze_0_rot_z
+float64 gaze_1_rot_x
+float64 gaze_1_rot_y
+float64 gaze_1_rot_z
+float64 diff_gaze_x
+float64 diff_gaze_y
+float64 diff_gaze_z
+int64 id_model
